@@ -8,3 +8,4 @@ MarkupSafe==2.1.3
 Werkzeug==2.3.6
 fastapi
 uvicorn
+mysql-connector-python
