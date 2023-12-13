@@ -27,8 +27,8 @@ jobs:
 
     - name: Run tests
       run: |
-        python -m unittest /Users/yifan/PycharmProjects/TapiocaCafeManagement/tts/t_meeting_data_service.py
+        python -m unittest ./tts/t_meeting_data_service.py
 
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build --platform linux/amd64 -t yf916/tapioca-cafe-management-service .
+#    - uses: actions/checkout@v3
+#    - name: Build the Docker image
+#      run: docker build --platform linux/amd64 -t yf916/tapioca-cafe-management-service .
