@@ -47,7 +47,8 @@ jobs:
       with:
         host: 13.58.188.11
         username: ec2-user
-        key: -----BEGIN RSA PRIVATE KEY-----
+        key: |-
+          -----BEGIN RSA PRIVATE KEY-----
           MIIEowIBAAKCAQEAo664xZhu5HS2ca/KechOv073hg3m9Tgg7b3fz4UacBXsJtaB
           /RwXY9vnHvPEPWJRiKh2a6VCQoQJoroyEz6FVa91NUz5bt0ncr7vh3IFjs1+8OYM
           jH/PyVx305dcEIdvJ7xYYYW+dEEXoe6RCGiNASqHeTSXBNkOY2YQJVgSAFxFuKIF
