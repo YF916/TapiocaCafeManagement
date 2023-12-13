@@ -42,38 +42,38 @@ jobs:
         docker build --platform linux/amd64 -t yf916/tapioca-cafe-management-service .
         docker push yf916/tapioca-cafe-management-service
 
-    - name: Pull Docker image on EC2
-      uses: appleboy/ssh-action@master
-      with:
-        host: ec2-13-58-188-11.us-east-2.compute.amazonaws.com
-        username: ec2-user
-        key:
-          -----BEGIN RSA PRIVATE KEY-----
-          MIIEowIBAAKCAQEAo664xZhu5HS2ca/KechOv073hg3m9Tgg7b3fz4UacBXsJtaB
-          /RwXY9vnHvPEPWJRiKh2a6VCQoQJoroyEz6FVa91NUz5bt0ncr7vh3IFjs1+8OYM
-          jH/PyVx305dcEIdvJ7xYYYW+dEEXoe6RCGiNASqHeTSXBNkOY2YQJVgSAFxFuKIF
-          UsPhUMVFRvtdMLi7Iolwr4F+55FFTYTIfFs3K9OPytAnQ2kJPqJbg8xOLiRSQgP0
-          vxeAujb+rrmWZvDwveDo22PzZngYq16RyicDI0MRVWmcWOVKkvLDfIUXtmYzFowk
-          08zR4z9WzhkkLhOQnyOw33AEuVx0wsm7AtC+wwIDAQABAoIBADKxZSZFPGrivrJc
-          +D9ZSxIy2bQZ0CK4HHKk8JDrrzFxiK7Kln2WWqQhseXDJ06/iXLigbJ6/xdsnzNX
-          qTSOk2rjKVC1ozazpYkDG1n+dTwx5pOjG9XTq724NqBAa1HvL/zFdzXU3xRQKIqN
-          QTuybaEj08s0/2SP+MXOEUgPi5uyeMvEquPGVKZxJThr6mJfWZH1FrDsMCtdfXZb
-          dLSnf013J/ASRadrC/X7agoZRe7GkYdwXU4mlG8YqpISBjsGkQPuhOdJVDYUJmDu
-          0fXQ80FHNicCmrk/xxoeA8O6wGFOJzr106w8Z/xBFrTNOVhno5NgLjc5XMEQvqu9
-          SwL/SbECgYEA4HhKUuUoln3VIawq1tjYx7PzSeASGzfJu+0pMnWYMgRJ3HI+B4yO
-          5lAq5nC5LIKFL8d4optwIQjaQo6wUUfqv3MPkk0SsXL/19fdBLVZ9/2zzugnusYY
-          uzUowH0i1IvKEeJ2jr5vJTslURP57hxw9jl0DeYGvd85LQpENlD96hsCgYEAuqyU
-          NFVZf8MpgYMDPi6vYU9ZY1aoS/fAdows4WLLS2uXGlAuQo3wtVocfocOpBkEkyXZ
-          7SsIn3q1zB8R9NP+aPVcJJl2z90w72w7EpqY/XJKFgPBUr/BzAWs4Ltriz9QLo8S
-          Vjl82am9iK+kQr/UUpfJbBDp/Vo9HUKkydI4yHkCgYEAonqv4dz6SiR/N8Z1o9qG
-          39cDzX+h243AOoVqgpnYNqwgAq+28qPtdAynYPJLN0qquXD7g0hcG61avz6lpdAW
-          vcm9hbrAQy3ovwYDd7sFippbovMsfueRU0EhZGOv6IXfGJ8CDkUOErcDRfLdwFtZ
-          8QCZXs4YJywDKPT7dw2dHe0CgYBUZzObdfvBiLx7koEk3HbvyLDh+YyezKZ482hX
-          gBPrRfpMK3S/Iu5zEQtRKj+0cpte7P5b/dkoQpNwd5vm1vNxAX9oDPtrgNdfadBL
-          2RrTfZmB2rDOeWVmmipQcm1tyHK4mnfwBI4u3FCWPNRIWfPmZDruYbdqliKL2FYp
-          6qNCAQKBgApznZyxK5rkW9RmumKx9hi4HMpWKiighsBJQf3Xd8096B6EyiRByILb
-          oa8xQtIWbgfZCfKh9Qwxohl7sraDfj5yn7ngbavB75e8xGIMBGvpyXrXK/R4F7hw
-          XrzxHNj6SJhEf5YvmTOpBD2VAszw+CurTSs86rOtJIR6HwaRnTQe
-          -----END RSA PRIVATE KEY-----
-        script: |
-          docker pull yf916/tapioca-cafe-management-service
+#    - name: Pull Docker image on EC2
+#      uses: appleboy/ssh-action@master
+#      with:
+#        host: ec2-13-58-188-11.us-east-2.compute.amazonaws.com
+#        username: ec2-user
+#        key:
+#          -----BEGIN RSA PRIVATE KEY-----
+#          MIIEowIBAAKCAQEAo664xZhu5HS2ca/KechOv073hg3m9Tgg7b3fz4UacBXsJtaB
+#          /RwXY9vnHvPEPWJRiKh2a6VCQoQJoroyEz6FVa91NUz5bt0ncr7vh3IFjs1+8OYM
+#          jH/PyVx305dcEIdvJ7xYYYW+dEEXoe6RCGiNASqHeTSXBNkOY2YQJVgSAFxFuKIF
+#          UsPhUMVFRvtdMLi7Iolwr4F+55FFTYTIfFs3K9OPytAnQ2kJPqJbg8xOLiRSQgP0
+#          vxeAujb+rrmWZvDwveDo22PzZngYq16RyicDI0MRVWmcWOVKkvLDfIUXtmYzFowk
+#          08zR4z9WzhkkLhOQnyOw33AEuVx0wsm7AtC+wwIDAQABAoIBADKxZSZFPGrivrJc
+#          +D9ZSxIy2bQZ0CK4HHKk8JDrrzFxiK7Kln2WWqQhseXDJ06/iXLigbJ6/xdsnzNX
+#          qTSOk2rjKVC1ozazpYkDG1n+dTwx5pOjG9XTq724NqBAa1HvL/zFdzXU3xRQKIqN
+#          QTuybaEj08s0/2SP+MXOEUgPi5uyeMvEquPGVKZxJThr6mJfWZH1FrDsMCtdfXZb
+#          dLSnf013J/ASRadrC/X7agoZRe7GkYdwXU4mlG8YqpISBjsGkQPuhOdJVDYUJmDu
+#          0fXQ80FHNicCmrk/xxoeA8O6wGFOJzr106w8Z/xBFrTNOVhno5NgLjc5XMEQvqu9
+#          SwL/SbECgYEA4HhKUuUoln3VIawq1tjYx7PzSeASGzfJu+0pMnWYMgRJ3HI+B4yO
+#          5lAq5nC5LIKFL8d4optwIQjaQo6wUUfqv3MPkk0SsXL/19fdBLVZ9/2zzugnusYY
+#          uzUowH0i1IvKEeJ2jr5vJTslURP57hxw9jl0DeYGvd85LQpENlD96hsCgYEAuqyU
+#          NFVZf8MpgYMDPi6vYU9ZY1aoS/fAdows4WLLS2uXGlAuQo3wtVocfocOpBkEkyXZ
+#          7SsIn3q1zB8R9NP+aPVcJJl2z90w72w7EpqY/XJKFgPBUr/BzAWs4Ltriz9QLo8S
+#          Vjl82am9iK+kQr/UUpfJbBDp/Vo9HUKkydI4yHkCgYEAonqv4dz6SiR/N8Z1o9qG
+#          39cDzX+h243AOoVqgpnYNqwgAq+28qPtdAynYPJLN0qquXD7g0hcG61avz6lpdAW
+#          vcm9hbrAQy3ovwYDd7sFippbovMsfueRU0EhZGOv6IXfGJ8CDkUOErcDRfLdwFtZ
+#          8QCZXs4YJywDKPT7dw2dHe0CgYBUZzObdfvBiLx7koEk3HbvyLDh+YyezKZ482hX
+#          gBPrRfpMK3S/Iu5zEQtRKj+0cpte7P5b/dkoQpNwd5vm1vNxAX9oDPtrgNdfadBL
+#          2RrTfZmB2rDOeWVmmipQcm1tyHK4mnfwBI4u3FCWPNRIWfPmZDruYbdqliKL2FYp
+#          6qNCAQKBgApznZyxK5rkW9RmumKx9hi4HMpWKiighsBJQf3Xd8096B6EyiRByILb
+#          oa8xQtIWbgfZCfKh9Qwxohl7sraDfj5yn7ngbavB75e8xGIMBGvpyXrXK/R4F7hw
+#          XrzxHNj6SJhEf5YvmTOpBD2VAszw+CurTSs86rOtJIR6HwaRnTQe
+#          -----END RSA PRIVATE KEY-----
+#        script: |
+#          docker pull yf916/tapioca-cafe-management-service
