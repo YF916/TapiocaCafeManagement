@@ -1,8 +1,8 @@
 from resources.abstract_base_data_service import BaseDataService
 import json
 from resources.meetings.meeting_models import MeetingModel, MeetingRspModel
-from mysql.connector import Error
-import mysql.connector
+#from mysql.connector import Error
+#import mysql.connector
 from datetime import datetime
 
 class MeetingDataService(BaseDataService):
@@ -13,15 +13,15 @@ class MeetingDataService(BaseDataService):
 
     def execute_write_query(self, connection, query, params=None):
         cursor = connection.cursor()
-        try:
-            if params:
+        #try:
+        if params:
                 cursor.execute(query, params)
-            else:
+        else:
                 cursor.execute(query)
-            connection.commit()
-            print("Query executed successfully")
-        except Error as e:
-            print(f"The error '{e}' occurred")
+        connection.commit()
+            #print("Query executed successfully")
+        #except mysql.connector.Error as e:
+        #    print(f"The error '{e}' occurred")
 
     def datetime_converter(self, o):
         if isinstance(o, datetime):
@@ -29,22 +29,22 @@ class MeetingDataService(BaseDataService):
 
     def execute_read_query(self, connection, query, params=None):
         cursor = connection.cursor()
-        try:
-            if params:
+        #try:
+        if params:
                 cursor.execute(query, params)
-            else:
+        else:
                 cursor.execute(query)
-            rows = cursor.fetchall()
+        rows = cursor.fetchall()
 
-            column_names = [column[0] for column in cursor.description]
-            result = [dict(zip(column_names, row)) for row in rows]
+        column_names = [column[0] for column in cursor.description]
+        result = [dict(zip(column_names, row)) for row in rows]
 
-            json_result = json.dumps(result, default=self.datetime_converter, indent=4)
-            json_dict = json.loads(json_result)
+        json_result = json.dumps(result, default=self.datetime_converter, indent=4)
+        json_dict = json.loads(json_result)
 
-            return rows, json_dict
-        except Error as e:
-            print(f"The error '{e}' occurred")
+        return rows, json_dict
+        #except mysql.connector.Error as e:
+        #    print(f"The error '{e}' occurred")
 
     def get_meetings(self, MeetingID: int = None):
         if MeetingID is None:

@@ -9,3 +9,4 @@ Werkzeug==2.3.6
 fastapi
 uvicorn
 mysql-connector-python
+pytest

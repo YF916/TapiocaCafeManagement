@@ -1,43 +1,38 @@
-import unittest
-from unittest.mock import MagicMock, patch
+# tests/test_meeting_data_service.py
+import pytest
+from unittest.mock import MagicMock
 from datetime import datetime
-from resources.meetings.meeting_models import MeetingModel, MeetingRspModel
 from resources.meetings.meetings_data_service import MeetingDataService
 
-class TestMeetingDataService(unittest.TestCase):
 
-    def setUp(self):
-        self.mock_db_connection = MagicMock()
-        self.config = {"db_connection": self.mock_db_connection}
-        self.meeting_service = MeetingDataService(self.config)
+@pytest.fixture
+def mock_db_connection():
+    return MagicMock()
 
-    @patch('resources.meetings.meetings_data_service.MeetingDataService.execute_read_query')
-    def test_get_meetings_no_id(self, mock_execute_read_query):
-        mock_execute_read_query.return_value = ([], [])
-        meetings = self.meeting_service.get_meetings()
-        self.assertEqual(meetings, [])
-        mock_execute_read_query.assert_called_once()
+@pytest.fixture
+def meeting_service(mock_db_connection):
+    config = {"db_connection": mock_db_connection}
+    return MeetingDataService(config)
 
-    @patch('resources.meetings.meetings_data_service.MeetingDataService.execute_read_query')
-    def test_get_meetings_with_id(self, mock_execute_read_query):
-        mock_execute_read_query.return_value = ([], [])
-        MeetingID = 1
-        meetings = self.meeting_service.get_meetings(MeetingID)
-        self.assertEqual(meetings, [])
-        mock_execute_read_query.assert_called_once_with(self.mock_db_connection,
-                                                        """SELECT * FROM Meeting WHERE MeetingID=%s;""",
-                                                        (MeetingID,))
+def test_get_meetings_no_id(meeting_service, mock_db_connection):
+    mock_db_connection.cursor().fetchall.return_value = []
+    assert meeting_service.get_meetings() == []
+    mock_db_connection.cursor().execute.assert_called_once()
 
-    @patch('resources.meetings.meetings_data_service.MeetingDataService.execute_write_query')
-    def test_create_meeting(self, mock_execute_write_query):
-        StaffID = 1
-        ScheduledTime = datetime.now()
-        Agenda = "Test Agenda"
-        response = self.meeting_service.create_meeting(StaffID, ScheduledTime, Agenda)
-        self.assertEqual(response, "New Meeting Created!")
-        mock_execute_write_query.assert_called_once()
+def test_get_meetings_with_id(meeting_service, mock_db_connection):
+    MeetingID = 1
+    mock_db_connection.cursor().fetchall.return_value = []
+    assert meeting_service.get_meetings(MeetingID) == []
+    mock_db_connection.cursor().execute.assert_called_once_with(
+        """SELECT * FROM Meeting WHERE MeetingID=%s;""", (MeetingID,))
 
-    # Add more tests for change_agenda and delete_meeting methods
+def test_create_meeting(meeting_service, mock_db_connection):
+    StaffID = 1
+    ScheduledTime = datetime.now()
+    Agenda = "Test Agenda"
+    response = meeting_service.create_meeting(StaffID, ScheduledTime, Agenda)
+    assert response == "New Meeting Created!"
+    mock_db_connection.cursor().execute.assert_called_once()
 
-if __name__ == '__main__':
-    unittest.main()
+# Additional tests for change_agenda and delete_meeting would follow a similar pattern
+
