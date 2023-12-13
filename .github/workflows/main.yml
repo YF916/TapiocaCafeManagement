@@ -30,6 +30,12 @@ jobs:
         pytest ./tts/t_meeting_data_service.py
         pytest ./tts/t_meeting_resource.py
 
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v1
+      with:
+        username: yf916
+        password: dckr_pat_i7x7Agga9_4jd930HNVbZp6IoJw
+
     - uses: actions/checkout@v3
     - name: Build and push Docker image
       run: |
