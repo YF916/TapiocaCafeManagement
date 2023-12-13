@@ -30,6 +30,10 @@ jobs:
         pytest ./tts/t_meeting_data_service.py
         pytest ./tts/t_meeting_resource.py
 
-#    - uses: actions/checkout@v3
-#    - name: Build the Docker image
-#      run: docker build --platform linux/amd64 -t yf916/tapioca-cafe-management-service .
+    - uses: actions/checkout@v3
+    - name: Build and push Docker image
+      run: |
+        docker build --platform linux/amd64 -t yf916/tapioca-cafe-management-service .
+        docker push yf916/tapioca-cafe-management-service
+
+
