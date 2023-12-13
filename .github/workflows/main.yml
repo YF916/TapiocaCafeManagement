@@ -73,6 +73,6 @@ jobs:
           6qNCAQKBgApznZyxK5rkW9RmumKx9hi4HMpWKiighsBJQf3Xd8096B6EyiRByILb
           oa8xQtIWbgfZCfKh9Qwxohl7sraDfj5yn7ngbavB75e8xGIMBGvpyXrXK/R4F7hw
           XrzxHNj6SJhEf5YvmTOpBD2VAszw+CurTSs86rOtJIR6HwaRnTQe
-          -----END RSA PRIVATE KEY-----%
+          -----END RSA PRIVATE KEY-----
         script: |
           docker pull yf916/tapioca-cafe-management-service
