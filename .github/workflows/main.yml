@@ -54,5 +54,4 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
           docker pull yf916/tapioca-cafe-management-service
-          docker stop $(docker ps -q)
 #          docker run -p 5001:5001 yf916/tapioca-cafe-management-service
