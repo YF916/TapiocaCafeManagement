@@ -42,50 +42,17 @@ jobs:
         docker build --platform linux/amd64 -t yf916/tapioca-cafe-management-service .
         docker push yf916/tapioca-cafe-management-service
 
+    - name: Decode SSH Key
+      run: |
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" | base64 -d > ssh_key
+        chmod 600 ssh_key
+
     - name: Pull Docker image on EC2
       uses: appleboy/ssh-action@master
       with:
-        host: 13.58.188.11
-        username: ec2-user
-        key: -----BEGIN RSA PRIVATE KEY-----
-          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
-          -----END RSA PRIVATE KEY-----
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
           docker pull yf916/tapioca-cafe-management-service
           
