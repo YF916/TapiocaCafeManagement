@@ -42,10 +42,12 @@ jobs:
         docker build --platform linux/amd64 -t yf916/tapioca-cafe-management-service .
         docker push yf916/tapioca-cafe-management-service
 
-    - name: Decode SSH Key
-      run: |
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" | base64 -d > ssh_key
-        chmod 600 ssh_key
+
+
+#    - name: Decode SSH Key
+#      run: |
+#        echo "${{ secrets.SSH_PRIVATE_KEY }}" | base64 -d > ssh_key
+#        chmod 600 ssh_key
 
     - name: Pull Docker image on EC2
       uses: appleboy/ssh-action@master
