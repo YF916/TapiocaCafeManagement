@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: CI/CD Pipelines
 
 on:
   push:
@@ -53,5 +53,14 @@ jobs:
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
+#          Pull the latest Docker image
           docker pull yf916/tapioca-cafe-management-service
-#          docker run -p 5001:5001 yf916/tapioca-cafe-management-service
+#          Run the Docker container in the background
+          docker run -d --name tapioca-cafe-service -p 8080:8080 yf916/tapioca-cafe-management-service
+#          Allow some time for the service to start
+          sleep 10
+#          Check if the service is working
+          curl -f http://localhost:8080/healthcheck || exit 1
+#          Stop the Docker container
+          docker stop tapioca-cafe-service
+
