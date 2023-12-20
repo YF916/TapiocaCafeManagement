@@ -54,8 +54,8 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
           docker pull yf916/tapioca-cafe-management-service
-          docker run -d --name tapioca-cafe-service -p 5001:5001 yf916/tapioca-cafe-management-service
+          docker run -p 5001:5001 yf916/tapioca-cafe-management-service
           sleep 10
-          curl -f http://ec2-13-58-188-11.us-east-2.compute.amazonaws.com:5001/healthcheck || exit 1
-          docker stop tapioca-cafe-service
+          curl -f http://ec2-13-58-188-11.us-east-2.compute.amazonaws.com:5001 || exit 1
+          docker stop $(docker ps -q)
 
