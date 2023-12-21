@@ -133,10 +133,10 @@ def get_data_service():
     # )
 
     db_connection = create_database_connection(
-        host_name="database-1.caogqwqgw2no.us-east-1.rds.amazonaws.com",
+        host_name="database-2.caogqwqgw2no.us-east-1.rds.amazonaws.com",
         user_name="admin",
         user_password="Stargod08122",
-        db_name="Tapioca"
+        db_name="Tapioca2"
     )
 
     if db_connection is None:
